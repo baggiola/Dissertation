@@ -1,0 +1,32 @@
+# Trainer configuration. Values here are defaults; copy to config.local.toml
+# (git-ignored) to override per machine, e.g. camera index or serial port.
+
+[camera]
+index = 0
+width = 1280
+height = 720
+
+[pose]
+backend = "mediapipe"
+model = "models/pose_landmarker_full.task"  # lite / full / heavy
+min_detection_confidence = 0.5
+min_tracking_confidence = 0.5
+
+[smoothing]
+method = "one_euro"     # "one_euro" | "ema" | "none"
+ema_alpha = 0.5
+one_euro_min_cutoff = 1.0
+one_euro_beta = 0.007
+one_euro_d_cutoff = 1.0
+
+[comparison]
+default_tolerance_deg = 15.0
+
+[speech]
+backend = "log"         # "pyttsx3" | "log"
+min_interval_s = 2.5
+
+[haptics]
+backend = "mock"        # "serial" | "mock"
+port = "COM3"
+baud = 115200
